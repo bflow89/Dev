@@ -1,0 +1,88 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/20/2020 1:58:52 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-DP0FPH8"
+  DTS:CreatorName="DESKTOP-DP0FPH8\루트엘"
+  DTS:DTSID="{C68DBE6F-6256-48DD-82ED-6E1D12BCDE53}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.93"
+  DTS:LocaleID="1042"
+  DTS:ObjectName="Package_Param"
+  DTS:PackageType="5"
+  DTS:VersionBuild="8"
+  DTS:VersionGUID="{101AD7A9-96CA-46D9-B970-1D656E6FCE75}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DBA]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B20615C2-C465-4301-8BDA-3914216857E4}"
+      DTS:ObjectName="LocalHost.DBA">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DBA;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{B6FBCDEC-9F14-44C3-990B-29530BCFBFF3}"
+      DTS:ObjectName="Param">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SQL 실행 태스크"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="SQL 실행 태스크"
+      DTS:DTSID="{5C05493F-A3C7-4AAE-8D4A-A92F17B3BAC6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL 실행 태스크"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B20615C2-C465-4301-8BDA-3914216857E4}"
+          SQLTask:SqlStatementSource="DECLARE @Num INT&#xA;SET @Num = ?&#xA;&#xA;INSERT INTO Test2&#xA;SELECT @Num&#xA;,  GETDATE()" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::Param"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="131"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--이 CDATA 섹션에는 패키지에 대한 레이아웃 정보가 포함되어 있습니다. 이 섹션에는 (x,y) 좌표, 너비 및 높이와 같은 정보가 포함되어 있습니다.-->
+<!--이 섹션을 수동으로 편집할 때 실수한 경우 해당 내용을 삭제할 수 있습니다. -->
+<!--패키지를 계속 수동으로 로드할 수 있지만 이전 레이아웃 정보가 손실되고 디자이너가 디자인 화면의 요소를 자동으로 다시 정렬합니다.-->
+<Objects
+  Version="8">
+  <!--아래의 각 노드에는 런타임 동작에 영향을 미치지 않는 속성이 포함됩니다.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\SQL 실행 태스크"
+          TopLeft="24.9999996274709,45.6444432352796" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
